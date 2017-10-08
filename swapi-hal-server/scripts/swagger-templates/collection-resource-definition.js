@@ -1,8 +1,13 @@
+const {
+	getResourceDefinitionName,
+	getCollectionResourceDefinitionName
+} = require('../../src/rest-util');
+
 module.exports = (resource) => ({
-	[`${resource.pluralName}Collection`]: {
+	[getCollectionResourceDefinitionName(resource)]: {
 		"type": "array",
 		"items": {
-			"$ref": `#/definitions/${resource.name}`
+			"$ref": `#/definitions/${getResourceDefinitionName(resource)}`
 		}
 	}
 });

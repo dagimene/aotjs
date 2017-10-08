@@ -1,9 +1,9 @@
 const {
-	kebabCase,
-} = require('lodash');
+	generateCollectionResourcePath
+} = require('../../src/rest-util');
 
 module.exports = (resource) => ({
-	[`${resource.parentPath || ''}/${kebabCase(resource.pluralName)}`]: {
+	[generateCollectionResourcePath(resource)]: {
 		"get": {
 			"operationId": `get${resource.pluralName}Collection`,
 			...(resource.parentParameters ?

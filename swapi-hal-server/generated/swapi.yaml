@@ -472,6 +472,11 @@ definitions:
       _links:
         type: object
         properties:
+          self:
+            type: object
+            x-operation-id: getFilm
+            allOf:
+              - $ref: '#/definitions/Link'
           characters:
             type: object
             x-operation-id: getFilmPeopleCollection
@@ -626,6 +631,11 @@ definitions:
       _links:
         type: object
         properties:
+          self:
+            type: object
+            x-operation-id: getPlanet
+            allOf:
+              - $ref: '#/definitions/Link'
           films:
             type: object
             x-operation-id: getPlanetFilmsCollection
@@ -689,6 +699,11 @@ definitions:
       _links:
         type: object
         properties:
+          self:
+            type: object
+            x-operation-id: getSpecies
+            allOf:
+              - $ref: '#/definitions/Link'
           people:
             type: object
             x-operation-id: getSpeciesPeopleCollection
@@ -761,6 +776,11 @@ definitions:
       _links:
         type: object
         properties:
+          self:
+            type: object
+            x-operation-id: getVehicle
+            allOf:
+              - $ref: '#/definitions/Link'
           pilots:
             type: object
             x-operation-id: getVehiclePeopleCollection
@@ -844,6 +864,11 @@ definitions:
       _links:
         type: object
         properties:
+          self:
+            type: object
+            x-operation-id: getStarship
+            allOf:
+              - $ref: '#/definitions/Link'
           pilots:
             type: object
             x-operation-id: getStarshipPeopleCollection

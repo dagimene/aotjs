@@ -118,11 +118,6 @@
 				}
 			},
 			"links": {
-				"self": {
-					"description": "The url of this resource",
-					"resource": "Person",
-					"collection": false
-				},
 				"films": {
 					"description": "An array of urls of film resources that this person has been in.",
 					"resource": "Films",
@@ -130,7 +125,7 @@
 				},
 				"homeworld": {
 					"description": "The url of the planet resource that this person was born on.",
-					"resource": "Planet",
+					"resource": "Planets",
 					"collection": false
 				},
 				"vehicles": {
@@ -280,7 +275,7 @@
 				},
 				"homeworld": {
 					"description": "The URL of a planet resource, a planet that this species originates from.",
-					"resource": "Planet",
+					"resource": "Planets",
 					"collection": false
 				}
 			}

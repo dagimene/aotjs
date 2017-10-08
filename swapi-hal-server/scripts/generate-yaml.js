@@ -2,17 +2,21 @@ const fs = require('fs');
 const path = require('path');
 const YAML = require('js-yaml');
 const {
-	camelCase,
-	kebabCase,
 	flatMap,
 	filter
 } = require('lodash');
-const description = require('../swapi-resources');
+const apiDefinitions = require('../swapi-resources.json');
+
+const {
+	generateResourcePath,
+	generateResourceIdParameterName
+} = require('../src/rest-util');
 
 const apiHeader = require('./swagger-templates/header');
-const apiDefinitions = require('./swagger-templates/definitions');
+const apiResourceDefinitions = require('./swagger-templates/definitions');
 const apiCollectionResourceDefinitionTemplate = require('./swagger-templates/collection-resource-definition');
 const apiCollectionResourcePathTemplate = require('./swagger-templates/collection-resource-path');
+const apiSubResourcePathTemplate = require('./swagger-templates/sub-resource-path');
 const apiResourceDefinitionTemplate = require('./swagger-templates/resource-definition');
 const apiResourcePathTemplate = require('./swagger-templates/resource-path');
 
@@ -23,40 +27,32 @@ function getSubResources(resource) {
 
 	return filter(resource.links, link => link.collection)
 		.map(link => ({
-			resourceName: link.resource,
-			pluralName: resource.name + link.resource,
-			parentParameters: [{
-				"name": `${camelCase(resource.name)}Id`,
-				"in": "path",
-				"description": `ID of the parent \`${resource.name}\``,
-				"required": true,
-				"type": "string",
-			}],
-			parentPath: `/${kebabCase(resource.pluralName)}/{${camelCase(resource.name)}Id}`
+			parent: resource,
+			pluralName: link.resource
 		}));
 }
 
 const apiDefinition = Object.assign({
 	...apiHeader,
 	paths: Object.assign({},
-		...flatMap(description.resources, resource => [
+		...flatMap(apiDefinitions.resources, resource => [
 			...(resource.pluralName ? [ apiCollectionResourcePathTemplate(resource) ] : []),
 			apiResourcePathTemplate(resource),
-			...getSubResources(resource).map(subrsource => apiCollectionResourcePathTemplate(subrsource)),
+			...getSubResources(resource).map(apiSubResourcePathTemplate),
 		])
 	),
 	definitions: Object.assign({},
-		...flatMap(description.resources, resource => [
+		...flatMap(apiDefinitions.resources, resource => [
 			...(resource.pluralName ? [ apiCollectionResourceDefinitionTemplate(resource) ] : []),
-			apiResourceDefinitionTemplate(resource)
+			apiResourceDefinitionTemplate(resource, apiDefinitions)
 		]),
-		apiDefinitions
+		apiResourceDefinitions
 	)
 });
 
 
+console.log(JSON.stringify(apiDefinition, null, '  '));
 const yamlContent = YAML.safeDump(apiDefinition);
 console.log(yamlContent);
 
 fs.writeFileSync(path.resolve(__dirname, '../generated/swapi.yaml'), yamlContent);
-
