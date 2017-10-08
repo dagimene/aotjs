@@ -17,7 +17,7 @@ const {
 } = require('../src/rest-util');
 
 const REMOTE_BASE_URL = "https://swapi.co/api";
-const LOCAL_BASE_URL = "http://localhost:8080/apis/v0";
+const LOCAL_BASE_URL = "http://localhost:3000/apis/v0";
 
 const remoteCollectionResourceUrl = resourceType => `${REMOTE_BASE_URL}/${resourceType}`;
 const remoteResourceUrl = (resourceType, id) => `${remoteCollectionResourceUrl(resourceType)}/${id}`;

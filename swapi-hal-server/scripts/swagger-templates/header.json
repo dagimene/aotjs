@@ -11,7 +11,7 @@
 			"name": "MIT"
 		}
 	},
-	"host": "aotjs.com",
+	"host": "localhost:3000",
 	"basePath": "/apis/v0/",
 	"consumes": [
 		"application/json"

@@ -1,12 +1,8 @@
 {
-  "name": "aot",
+  "name": "swapi-hal-server",
   "version": "0.1.0",
   "description": "AOT Presentation",
   "main": "index.js",
-  "dependencies": {
-    "graphql": "^0.11.3"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

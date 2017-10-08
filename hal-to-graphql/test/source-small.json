@@ -1,0 +1,218 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a REST HATEOAS server.",
+    "version": "1.0.0",
+    "title": "SWAPI HAL",
+    "contact": {
+      "email": "ing.daniel.gimenez@gmail.com"
+    },
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "host": "aotjs.com",
+  "basePath": "/apis/v0/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/people": {
+      "get": {
+        "operationId": "getPeopleCollection",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PeopleCollection"
+            }
+          }
+        }
+      }
+    },
+    "/people/{personId}": {
+      "get": {
+        "operationId": "getPerson",
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "ID of the `Person` to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Person"
+            }
+          },
+          "404": {
+            "description": "`Person` not found"
+          }
+        }
+      }
+    },
+    "/people/{personId}/starships": {
+      "get": {
+        "operationId": "getPersonStarshipsCollection",
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "ID of the parent `Person`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/StarshipsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/starships": {
+      "get": {
+        "operationId": "getStarshipsCollection",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/StarshipsCollection"
+            }
+          }
+        }
+      }
+    },
+    "/starships/{starshipId}": {
+      "get": {
+        "operationId": "getStarship",
+        "parameters": [
+          {
+            "name": "starshipId",
+            "in": "path",
+            "description": "ID of the `Starship` to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Starship"
+            }
+          },
+          "404": {
+            "description": "`Starship` not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PeopleCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Person"
+      }
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "skin_color": {
+          "description": "The skin color of this person.",
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "x-operation-id": "getPerson",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "starships": {
+              "type": "object",
+              "x-operation-id": "getPersonStarshipsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "StarshipsCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Starship"
+      }
+    },
+    "Starship": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "cargo_capacity": {
+          "description": "The maximum number of kilograms that this starship can transport.",
+          "type": "string"
+        },
+        "starship_class": {
+          "description": "The class of this starship, such as Starfighter or Deep Space Mobile Battlestation.",
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "x-operation-id": "getStarship",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

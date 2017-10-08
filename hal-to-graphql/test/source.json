@@ -1,0 +1,1317 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a REST HATEOAS server.",
+    "version": "1.0.0",
+    "title": "SWAPI HAL",
+    "contact": {
+      "email": "ing.daniel.gimenez@gmail.com"
+    },
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "host": "aotjs.com",
+  "basePath": "/apis/v0/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/films": {
+      "get": {
+        "operationId": "getFilmsCollection",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FilmsCollection"
+            }
+          }
+        }
+      }
+    },
+    "/films/{filmId}": {
+      "get": {
+        "operationId": "getFilm",
+        "parameters": [
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of the `Film` to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Film"
+            }
+          },
+          "404": {
+            "description": "`Film` not found"
+          }
+        }
+      }
+    },
+    "/films/{filmId}/people": {
+      "get": {
+        "operationId": "getFilmPeopleCollection",
+        "parameters": [
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of the parent `Film`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PeopleCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/films/{filmId}/vehicles": {
+      "get": {
+        "operationId": "getFilmVehiclesCollection",
+        "parameters": [
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of the parent `Film`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/VehiclesCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/films/{filmId}/starships": {
+      "get": {
+        "operationId": "getFilmStarshipsCollection",
+        "parameters": [
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of the parent `Film`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/StarshipsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/films/{filmId}/species": {
+      "get": {
+        "operationId": "getFilmSpeciesCollection",
+        "parameters": [
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of the parent `Film`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SpeciesCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/films/{filmId}/planets": {
+      "get": {
+        "operationId": "getFilmPlanetsCollection",
+        "parameters": [
+          {
+            "name": "filmId",
+            "in": "path",
+            "description": "ID of the parent `Film`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PlanetsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/people": {
+      "get": {
+        "operationId": "getPeopleCollection",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PeopleCollection"
+            }
+          }
+        }
+      }
+    },
+    "/people/{personId}": {
+      "get": {
+        "operationId": "getPerson",
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "ID of the `Person` to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Person"
+            }
+          },
+          "404": {
+            "description": "`Person` not found"
+          }
+        }
+      }
+    },
+    "/people/{personId}/films": {
+      "get": {
+        "operationId": "getPersonFilmsCollection",
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "ID of the parent `Person`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FilmsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/people/{personId}/vehicles": {
+      "get": {
+        "operationId": "getPersonVehiclesCollection",
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "ID of the parent `Person`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/VehiclesCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/people/{personId}/starships": {
+      "get": {
+        "operationId": "getPersonStarshipsCollection",
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "ID of the parent `Person`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/StarshipsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/people/{personId}/species": {
+      "get": {
+        "operationId": "getPersonSpeciesCollection",
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "ID of the parent `Person`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SpeciesCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/planets": {
+      "get": {
+        "operationId": "getPlanetsCollection",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PlanetsCollection"
+            }
+          }
+        }
+      }
+    },
+    "/planets/{planetId}": {
+      "get": {
+        "operationId": "getPlanet",
+        "parameters": [
+          {
+            "name": "planetId",
+            "in": "path",
+            "description": "ID of the `Planet` to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Planet"
+            }
+          },
+          "404": {
+            "description": "`Planet` not found"
+          }
+        }
+      }
+    },
+    "/planets/{planetId}/films": {
+      "get": {
+        "operationId": "getPlanetFilmsCollection",
+        "parameters": [
+          {
+            "name": "planetId",
+            "in": "path",
+            "description": "ID of the parent `Planet`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FilmsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/planets/{planetId}/people": {
+      "get": {
+        "operationId": "getPlanetPeopleCollection",
+        "parameters": [
+          {
+            "name": "planetId",
+            "in": "path",
+            "description": "ID of the parent `Planet`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PeopleCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/species": {
+      "get": {
+        "operationId": "getSpeciesCollection",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SpeciesCollection"
+            }
+          }
+        }
+      }
+    },
+    "/species/{speciesId}": {
+      "get": {
+        "operationId": "getSpecies",
+        "parameters": [
+          {
+            "name": "speciesId",
+            "in": "path",
+            "description": "ID of the `Species` to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Species"
+            }
+          },
+          "404": {
+            "description": "`Species` not found"
+          }
+        }
+      }
+    },
+    "/species/{speciesId}/people": {
+      "get": {
+        "operationId": "getSpeciesPeopleCollection",
+        "parameters": [
+          {
+            "name": "speciesId",
+            "in": "path",
+            "description": "ID of the parent `Species`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PeopleCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/species/{speciesId}/films": {
+      "get": {
+        "operationId": "getSpeciesFilmsCollection",
+        "parameters": [
+          {
+            "name": "speciesId",
+            "in": "path",
+            "description": "ID of the parent `Species`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FilmsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/vehicles": {
+      "get": {
+        "operationId": "getVehiclesCollection",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/VehiclesCollection"
+            }
+          }
+        }
+      }
+    },
+    "/vehicles/{vehicleId}": {
+      "get": {
+        "operationId": "getVehicle",
+        "parameters": [
+          {
+            "name": "vehicleId",
+            "in": "path",
+            "description": "ID of the `Vehicle` to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          },
+          "404": {
+            "description": "`Vehicle` not found"
+          }
+        }
+      }
+    },
+    "/vehicles/{vehicleId}/people": {
+      "get": {
+        "operationId": "getVehiclePeopleCollection",
+        "parameters": [
+          {
+            "name": "vehicleId",
+            "in": "path",
+            "description": "ID of the parent `Vehicle`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PeopleCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/vehicles/{vehicleId}/films": {
+      "get": {
+        "operationId": "getVehicleFilmsCollection",
+        "parameters": [
+          {
+            "name": "vehicleId",
+            "in": "path",
+            "description": "ID of the parent `Vehicle`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FilmsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/starships": {
+      "get": {
+        "operationId": "getStarshipsCollection",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/StarshipsCollection"
+            }
+          }
+        }
+      }
+    },
+    "/starships/{starshipId}": {
+      "get": {
+        "operationId": "getStarship",
+        "parameters": [
+          {
+            "name": "starshipId",
+            "in": "path",
+            "description": "ID of the `Starship` to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Starship"
+            }
+          },
+          "404": {
+            "description": "`Starship` not found"
+          }
+        }
+      }
+    },
+    "/starships/{starshipId}/people": {
+      "get": {
+        "operationId": "getStarshipPeopleCollection",
+        "parameters": [
+          {
+            "name": "starshipId",
+            "in": "path",
+            "description": "ID of the parent `Starship`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/PeopleCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    },
+    "/starships/{starshipId}/films": {
+      "get": {
+        "operationId": "getStarshipFilmsCollection",
+        "parameters": [
+          {
+            "name": "starshipId",
+            "in": "path",
+            "description": "ID of the parent `Starship`",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/FilmsCollection"
+            }
+          },
+          "404": {
+            "description": "`undefined` not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FilmsCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Film"
+      }
+    },
+    "Film": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "opening_crawl": {
+          "description": "The opening crawl text at the beginning of this film.",
+          "type": "string"
+        },
+        "episode_id": {
+          "description": "The episode number of this film.",
+          "type": "integer"
+        },
+        "edited": {
+          "description": "the ISO 8601 date format of the time that this resource was edited.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "director": {
+          "description": "The director of this film.",
+          "type": "string"
+        },
+        "release_date": {
+          "description": "The release date at original creator country.",
+          "format": "date",
+          "type": "string"
+        },
+        "title": {
+          "description": "The title of this film.",
+          "type": "string"
+        },
+        "producer": {
+          "description": "The producer(s) of this film.",
+          "type": "string"
+        },
+        "created": {
+          "description": "The ISO 8601 date format of the time that this resource was created.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "x-operation-id": "getFilm",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "characters": {
+              "type": "object",
+              "x-operation-id": "getFilmPeopleCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "vehicles": {
+              "type": "object",
+              "x-operation-id": "getFilmVehiclesCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "starships": {
+              "type": "object",
+              "x-operation-id": "getFilmStarshipsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "species": {
+              "type": "object",
+              "x-operation-id": "getFilmSpeciesCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "planets": {
+              "type": "object",
+              "x-operation-id": "getFilmPlanetsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "PeopleCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Person"
+      }
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "skin_color": {
+          "description": "The skin color of this person.",
+          "type": "string"
+        },
+        "birth_year": {
+          "description": "The birth year of this person. BBY (Before the Battle of Yavin) or ABY (After the Battle of Yavin).",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this person.",
+          "type": "string"
+        },
+        "edited": {
+          "description": "the ISO 8601 date format of the time that this resource was edited.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "gender": {
+          "description": "The gender of this person (if known).",
+          "type": "string"
+        },
+        "height": {
+          "description": "The height of this person in meters.",
+          "type": "string"
+        },
+        "hair_color": {
+          "description": "The hair color of this person.",
+          "type": "string"
+        },
+        "created": {
+          "description": "The ISO 8601 date format of the time that this resource was created.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "mass": {
+          "description": "The mass of this person in kilograms.",
+          "type": "string"
+        },
+        "eye_color": {
+          "description": "The eye color of this person.",
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "x-operation-id": "getPerson",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "films": {
+              "type": "object",
+              "x-operation-id": "getPersonFilmsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "homeworld": {
+              "type": "object",
+              "x-operation-id": "getPlanet",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "vehicles": {
+              "type": "object",
+              "x-operation-id": "getPersonVehiclesCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "starships": {
+              "type": "object",
+              "x-operation-id": "getPersonStarshipsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "species": {
+              "type": "object",
+              "x-operation-id": "getPersonSpeciesCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "PlanetsCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Planet"
+      }
+    },
+    "Planet": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "orbital_period": {
+          "description": "The number of standard days it takes for this planet to complete a single orbit of its local star.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this planet.",
+          "type": "string"
+        },
+        "population": {
+          "description": "The average populationof sentient beings inhabiting this planet.",
+          "type": "string"
+        },
+        "edited": {
+          "description": "the ISO 8601 date format of the time that this resource was edited.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "gravity": {
+          "description": "A number denoting the gravity of this planet. Where 1 is normal.",
+          "type": "string"
+        },
+        "surface_water": {
+          "description": "The percentage of the planet surface that is naturally occuring water or bodies of water.",
+          "type": "string"
+        },
+        "rotation_period": {
+          "description": "The number of standard hours it takes for this planet to complete a single rotation on its axis.",
+          "type": "string"
+        },
+        "terrain": {
+          "description": "the terrain of this planet. Comma-seperated if diverse.",
+          "type": "string"
+        },
+        "climate": {
+          "description": "The climate of this planet. Comma-seperated if diverse.",
+          "type": "string"
+        },
+        "created": {
+          "description": "The ISO 8601 date format of the time that this resource was created.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "diameter": {
+          "description": "The diameter of this planet in kilometers.",
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "x-operation-id": "getPlanet",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "films": {
+              "type": "object",
+              "x-operation-id": "getPlanetFilmsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "residents": {
+              "type": "object",
+              "x-operation-id": "getPlanetPeopleCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "SpeciesCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Species"
+      }
+    },
+    "Species": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "average_height": {
+          "description": "The average height of this person in centimeters.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this species.",
+          "type": "string"
+        },
+        "classification": {
+          "description": "The classification of this species.",
+          "type": "string"
+        },
+        "edited": {
+          "description": "The ISO 8601 date format of the time that this resource was edited.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "designation": {
+          "description": "The designation of this species.",
+          "type": "string"
+        },
+        "language": {
+          "description": "The language commonly spoken by this species.",
+          "type": "string"
+        },
+        "hair_colors": {
+          "description": "A comma-seperated string of common hair colors for this species, none if this species does not typically have hair.",
+          "type": "string"
+        },
+        "skin_colors": {
+          "description": "A comma-seperated string of common skin colors for this species, none if this species does not typically have skin.",
+          "type": "string"
+        },
+        "created": {
+          "description": "The ISO 8601 date format of the time that this resource was created.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "eye_colors": {
+          "description": "A comma-seperated string of common eye colors for this species, none if this species does not typically have eyes.",
+          "type": "string"
+        },
+        "average_lifespan": {
+          "description": "The average lifespan of this species in years.",
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "x-operation-id": "getSpecies",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "people": {
+              "type": "object",
+              "x-operation-id": "getSpeciesPeopleCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "films": {
+              "type": "object",
+              "x-operation-id": "getSpeciesFilmsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "homeworld": {
+              "type": "object",
+              "x-operation-id": "getPlanet",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "VehiclesCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Vehicle"
+      }
+    },
+    "Vehicle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "created": {
+          "description": "The ISO 8601 date format of the time that this resource was created.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "vehicle_class": {
+          "description": "The class of this vehicle, such as Wheeled.",
+          "type": "string"
+        },
+        "consumables": {
+          "description": "The maximum length of time that this vehicle can provide consumables for its entire crew without having to resupply.",
+          "type": "string"
+        },
+        "cargo_capacity": {
+          "description": "The maximum number of kilograms that this vehicle can transport.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this vehicle. The common name, such as Sand Crawler.",
+          "type": "string"
+        },
+        "cost_in_credits": {
+          "description": "The cost of this vehicle new, in galactic credits.",
+          "type": "string"
+        },
+        "edited": {
+          "description": "the ISO 8601 date format of the time that this resource was edited.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "model": {
+          "description": "The model or official name of this vehicle. Such as All Terrain Attack Transport.",
+          "type": "string"
+        },
+        "passengers": {
+          "description": "The number of non-essential people this vehicle can transport.",
+          "type": "string"
+        },
+        "max_atmosphering_speed": {
+          "description": "The maximum speed of this vehicle in atmosphere.",
+          "type": "string"
+        },
+        "manufacturer": {
+          "description": "The manufacturer of this vehicle. Comma seperated if more than one.",
+          "type": "string"
+        },
+        "length": {
+          "description": "The length of this vehicle in meters.",
+          "type": "string"
+        },
+        "crew": {
+          "description": "The number of personnel needed to run or pilot this vehicle.",
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "x-operation-id": "getVehicle",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "pilots": {
+              "type": "object",
+              "x-operation-id": "getVehiclePeopleCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "films": {
+              "type": "object",
+              "x-operation-id": "getVehicleFilmsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "StarshipsCollection": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Starship"
+      }
+    },
+    "Starship": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "created": {
+          "description": "The ISO 8601 date format of the time that this resource was created.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "hyperdrive_rating": {
+          "description": "The class of this starships hyperdrive.",
+          "type": "string"
+        },
+        "consumables": {
+          "description": "The maximum length of time that this starship can provide consumables for its entire crew without having to resupply.",
+          "type": "string"
+        },
+        "MGLT": {
+          "description": "The Maximum number of Megalights this starship can travel in a standard hour. A Megalight is a standard unit of distance and has never been defined before within the Star Wars universe. This figure is only really useful for measuring the difference in speed of starships. We can assume it is similar to AU, the distance between our Sun (Sol) and Earth.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of this starship. The common name, such as Death Star.",
+          "type": "string"
+        },
+        "cost_in_credits": {
+          "description": "The cost of this starship new, in galactic credits.",
+          "type": "string"
+        },
+        "cargo_capacity": {
+          "description": "The maximum number of kilograms that this starship can transport.",
+          "type": "string"
+        },
+        "starship_class": {
+          "description": "The class of this starship, such as Starfighter or Deep Space Mobile Battlestation.",
+          "type": "string"
+        },
+        "model": {
+          "description": "The model or official name of this starship. Such as T-65 X-wing or DS-1 Orbital Battle Station.",
+          "type": "string"
+        },
+        "edited": {
+          "description": "the ISO 8601 date format of the time that this resource was edited.",
+          "format": "date-time",
+          "type": "string"
+        },
+        "passengers": {
+          "description": "The number of non-essential people this starship can transport.",
+          "type": "string"
+        },
+        "max_atmosphering_speed": {
+          "description": "The maximum speed of this starship in atmosphere. n/a if this starship is incapable of atmosphering flight.",
+          "type": "string"
+        },
+        "manufacturer": {
+          "description": "The manufacturer of this starship. Comma seperated if more than one.",
+          "type": "string"
+        },
+        "length": {
+          "description": "The length of this starship in meters.",
+          "type": "string"
+        },
+        "crew": {
+          "description": "The number of personnel needed to run or pilot this starship.",
+          "type": "string"
+        },
+        "_links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "object",
+              "x-operation-id": "getStarship",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "pilots": {
+              "type": "object",
+              "x-operation-id": "getStarshipPeopleCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            },
+            "films": {
+              "type": "object",
+              "x-operation-id": "getStarshipFilmsCollection",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Link"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

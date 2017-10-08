@@ -1,6 +1,6 @@
 const app = require('express')();
 const api = require('./swapi-api');
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.use('/apis/v0', api);
 
