@@ -1,0 +1,13 @@
+{
+	"Link": {
+		"type": "object",
+		"properties": {
+			"href": {
+				"type": "string"
+			},
+			"rel": {
+				"type": "string"
+			}
+		}
+	}
+}

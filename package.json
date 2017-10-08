@@ -1,0 +1,15 @@
+{
+  "name": "aot",
+  "version": "0.1.0",
+  "description": "AOT Presentation",
+  "main": "index.js",
+  "dependencies": {
+    "graphql": "^0.11.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Gimenez",
+  "license": "MIT"
+}

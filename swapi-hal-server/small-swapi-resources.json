@@ -1,0 +1,40 @@
+{
+	"resources": {
+		"People": {
+			"name": "Person",
+			"pluralName": "People",
+			"description": "A person within the Star Wars universe",
+			"properties": {
+				"eye_color": {
+					"description": "The eye color of this person.",
+					"type": "string"
+				}
+			},
+			"links": {
+				"self": {
+					"description": "The url of this resource",
+					"resource": "Person"
+				},
+				"homeworld": {
+					"description": "The url of the planet resource that this person was born on.",
+					"resource": "Planet"
+				},
+				"vehicles": {
+					"description": "An array of vehicle resources that this person has piloted",
+					"resource": "Vehicles",
+					"collection": true
+				}
+			}
+		},
+		"Planets": {
+			"name": "Planet",
+			"pluralName": "Planets",
+			"description": "A planet."
+		},
+		"Vehicles": {
+			"name": "Vehicle",
+			"pluralName": "Vehicles",
+			"description": "A vehicle."
+		}
+	}
+}

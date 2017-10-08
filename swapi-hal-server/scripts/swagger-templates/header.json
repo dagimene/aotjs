@@ -1,0 +1,25 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "This is a REST HATEOAS server.",
+		"version": "1.0.0",
+		"title": "SWAPI HAL",
+		"contact": {
+			"email": "ing.daniel.gimenez@gmail.com"
+		},
+		"license": {
+			"name": "MIT"
+		}
+	},
+	"host": "aotjs.com",
+	"basePath": "/apis/v0/",
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
+	"schemes": [
+		"https"
+	]
+}
