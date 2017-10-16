@@ -8,9 +8,10 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run -s generate-flowtype",
-    "generate-flowtype": "npx gql2flow ../swapi-graphql-server/generated/swapi-introspection.json"
+    "generate-flowtype": "mkdir -p generated && npx gql2flow -o generated/swapi.flow.js ../swapi-graphql-server/generated/swapi-introspection.json"
   },
   "dependencies": {
+    "@aot/swapi-graphql-server": "*",
     "gql2flow": "^0.4.5",
     "graphql": "^0.11.7"
   }

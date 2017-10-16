@@ -10,7 +10,7 @@
     "build": "npm run -s generate-graphql",
     "watch": "nodemon .",
     "start": "node .",
-    "generate-graphql": "node ./scripts/generate-graphql"
+    "generate-graphql": "mkdir -p generated && node ./scripts/generate-graphql"
   },
   "dependencies": {
     "@aot/hal-to-graphql": "*",
