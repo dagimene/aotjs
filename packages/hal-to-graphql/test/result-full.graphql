@@ -1,0 +1,280 @@
+# A Star Wars film
+type Film {
+  id: ID!
+  opening_crawl: String
+  episode_id: Int
+  edited: String
+  director: String
+  release_date: String
+  title: String
+  producer: String
+  created: String
+  self: Film
+  characters: [Person]
+  vehicles: [Vehicle]
+  starships: [Starship]
+  species: [Species]
+  planets: [Planet]
+}
+
+# A person within the Star Wars universe
+type Person {
+  id: ID!
+  skin_color: String
+  birth_year: String
+  name: String
+  edited: String
+  gender: String
+  height: String
+  hair_color: String
+  created: String
+  mass: String
+  eye_color: String
+  self: Person
+  films: [Film]
+  homeworld: Planet
+  vehicles: [Vehicle]
+  starships: [Starship]
+  species: [Species]
+}
+
+# A planet.
+type Planet {
+  id: ID!
+  orbital_period: String
+  name: String
+  population: String
+  edited: String
+  gravity: String
+  surface_water: String
+  rotation_period: String
+  terrain: String
+  climate: String
+  created: String
+  diameter: String
+  self: Planet
+  films: [Film]
+  residents: [Person]
+}
+
+type Query {
+  # Get all Films
+  getFilmsCollection: [Film]
+
+  # Get a single Film
+  getFilm(
+    # ID of the `Film` to return
+    filmId: String
+  ): Film
+
+  # Get all People related to a Film
+  getFilmPeopleCollection(
+    # ID of the parent `Film`
+    filmId: String
+  ): [Person]
+
+  # Get all Vehicles related to a Film
+  getFilmVehiclesCollection(
+    # ID of the parent `Film`
+    filmId: String
+  ): [Vehicle]
+
+  # Get all Starships related to a Film
+  getFilmStarshipsCollection(
+    # ID of the parent `Film`
+    filmId: String
+  ): [Starship]
+
+  # Get all Species related to a Film
+  getFilmSpeciesCollection(
+    # ID of the parent `Film`
+    filmId: String
+  ): [Species]
+
+  # Get all Planets related to a Film
+  getFilmPlanetsCollection(
+    # ID of the parent `Film`
+    filmId: String
+  ): [Planet]
+
+  # Get all People
+  getPeopleCollection: [Person]
+
+  # Get a single Person
+  getPerson(
+    # ID of the `Person` to return
+    personId: String
+  ): Person
+
+  # Get all Films related to a Person
+  getPersonFilmsCollection(
+    # ID of the parent `Person`
+    personId: String
+  ): [Film]
+
+  # Get all Vehicles related to a Person
+  getPersonVehiclesCollection(
+    # ID of the parent `Person`
+    personId: String
+  ): [Vehicle]
+
+  # Get all Starships related to a Person
+  getPersonStarshipsCollection(
+    # ID of the parent `Person`
+    personId: String
+  ): [Starship]
+
+  # Get all Species related to a Person
+  getPersonSpeciesCollection(
+    # ID of the parent `Person`
+    personId: String
+  ): [Species]
+
+  # Get all Planets
+  getPlanetsCollection: [Planet]
+
+  # Get a single Planet
+  getPlanet(
+    # ID of the `Planet` to return
+    planetId: String
+  ): Planet
+
+  # Get all Films related to a Planet
+  getPlanetFilmsCollection(
+    # ID of the parent `Planet`
+    planetId: String
+  ): [Film]
+
+  # Get all People related to a Planet
+  getPlanetPeopleCollection(
+    # ID of the parent `Planet`
+    planetId: String
+  ): [Person]
+
+  # Get all Species
+  getSpeciesCollection: [Species]
+
+  # Get a single Species
+  getSpecies(
+    # ID of the `Species` to return
+    speciesId: String
+  ): Species
+
+  # Get all People related to a Species
+  getSpeciesPeopleCollection(
+    # ID of the parent `Species`
+    speciesId: String
+  ): [Person]
+
+  # Get all Films related to a Species
+  getSpeciesFilmsCollection(
+    # ID of the parent `Species`
+    speciesId: String
+  ): [Film]
+
+  # Get all Vehicles
+  getVehiclesCollection: [Vehicle]
+
+  # Get a single Vehicle
+  getVehicle(
+    # ID of the `Vehicle` to return
+    vehicleId: String
+  ): Vehicle
+
+  # Get all People related to a Vehicle
+  getVehiclePeopleCollection(
+    # ID of the parent `Vehicle`
+    vehicleId: String
+  ): [Person]
+
+  # Get all Films related to a Vehicle
+  getVehicleFilmsCollection(
+    # ID of the parent `Vehicle`
+    vehicleId: String
+  ): [Film]
+
+  # Get all Starships
+  getStarshipsCollection: [Starship]
+
+  # Get a single Starship
+  getStarship(
+    # ID of the `Starship` to return
+    starshipId: String
+  ): Starship
+
+  # Get all People related to a Starship
+  getStarshipPeopleCollection(
+    # ID of the parent `Starship`
+    starshipId: String
+  ): [Person]
+
+  # Get all Films related to a Starship
+  getStarshipFilmsCollection(
+    # ID of the parent `Starship`
+    starshipId: String
+  ): [Film]
+}
+
+# A species within the Star Wars universe
+type Species {
+  id: ID!
+  average_height: String
+  name: String
+  classification: String
+  edited: String
+  designation: String
+  language: String
+  hair_colors: String
+  skin_colors: String
+  created: String
+  eye_colors: String
+  average_lifespan: String
+  self: Species
+  people: [Person]
+  films: [Film]
+  homeworld: Planet
+}
+
+# A Starship
+type Starship {
+  id: ID!
+  created: String
+  hyperdrive_rating: String
+  consumables: String
+  MGLT: String
+  name: String
+  cost_in_credits: String
+  cargo_capacity: String
+  starship_class: String
+  model: String
+  edited: String
+  passengers: String
+  max_atmosphering_speed: String
+  manufacturer: String
+  length: String
+  crew: String
+  self: Starship
+  pilots: [Person]
+  films: [Film]
+}
+
+# A vehicle.
+type Vehicle {
+  id: ID!
+  created: String
+  vehicle_class: String
+  consumables: String
+  cargo_capacity: String
+  name: String
+  cost_in_credits: String
+  edited: String
+  model: String
+  passengers: String
+  max_atmosphering_speed: String
+  manufacturer: String
+  length: String
+  crew: String
+  self: Vehicle
+  pilots: [Person]
+  films: [Film]
+}

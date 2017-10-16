@@ -1,0 +1,25 @@
+{
+  "name": "@aot/swapi-graphql-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GraphQL Star Wars API Server",
+  "author": "Daniel Gimenez",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "npm run -s generate-graphql",
+    "watch": "nodemon .",
+    "start": "node .",
+    "generate-graphql": "node ./scripts/generate-graphql"
+  },
+  "dependencies": {
+    "@aot/hal-to-graphql": "*",
+    "@aot/swapi-hal-server": "*",
+    "express": "^4.16.1",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.11.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}

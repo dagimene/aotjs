@@ -1,0 +1,30 @@
+type Person {
+  id: ID!
+  skin_color: String
+  self: Person
+  starships: [Starship]
+}
+
+type Query {
+  getPeopleCollection: [Person]
+  getPerson(
+    # ID of the `Person` to return
+    personId: String
+  ): Person
+  getPersonStarshipsCollection(
+    # ID of the parent `Person`
+    personId: String
+  ): [Starship]
+  getStarshipsCollection: [Starship]
+  getStarship(
+    # ID of the `Starship` to return
+    starshipId: String
+  ): Starship
+}
+
+type Starship {
+  id: ID!
+  cargo_capacity: String
+  starship_class: String
+  self: Starship
+}

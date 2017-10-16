@@ -1,0 +1,17 @@
+{
+  "name": "@aot/swapi-flow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Flowtype definitions for GraphQL Star Wars API",
+  "author": "Daniel Gimenez",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run -s generate-flowtype",
+    "generate-flowtype": "npx gql2flow ../swapi-graphql-server/generated/swapi-introspection.json"
+  },
+  "dependencies": {
+    "gql2flow": "^0.4.5",
+    "graphql": "^0.11.7"
+  }
+}

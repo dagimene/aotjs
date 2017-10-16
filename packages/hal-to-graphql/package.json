@@ -1,0 +1,26 @@
+{
+  "name": "@aot/hal-to-graphql",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Generates GraphQL Server from HAL APIs",
+  "author": "Daniel Gimenez",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha",
+    "test:watch": "mocha -w"
+  },
+  "peerDependencies": {
+    "graphql": "^0.11.7"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "lodash": "^4.17.4",
+    "swagger-parser": "^3.4.2",
+    "url-template": "^2.0.8"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}

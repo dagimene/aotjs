@@ -1,11 +1,18 @@
 {
-  "name": "swapi-hal-server",
+  "name": "@aot/aot-demo",
   "version": "0.1.0",
-  "description": "AOT Presentation",
+  "description": "AOT Demo",
+  "author": "Daniel Gimenez",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "start": "lerna run --parallel start",
+    "test": "lerna run test"
   },
-  "author": "Daniel Gimenez",
-  "license": "MIT"
+  "dependencies": {
+    "lerna": "^2.4.0",
+    "npm-run-all": "^4.1.1"
+  }
 }
