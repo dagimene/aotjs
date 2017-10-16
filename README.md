@@ -77,9 +77,9 @@ This script will start the three servers in the project. You need to run the HAL
 
 By default, the servers will run in the following ports:
 
-- HAL API will run in PORT 3000.
-- GraphQL API will run in PORT 4000.
-- Mock Server will run in PORT 5000.
+- HAL API will run in port **3000**. Try http://localhost:3000/apis/v0/films.
+- GraphQL API will run in port **4000**. Open GraphiQL in http://localhost:4000/graphql.
+- Mock Server will run in port **5000**. Open GraphiQL in http://localhost:5000/graphql.
 
 ```
 npm start
