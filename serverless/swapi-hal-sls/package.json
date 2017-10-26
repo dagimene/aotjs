@@ -1,0 +1,15 @@
+{
+  "name": "swapi-hal-sls",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Gimenez",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.17.0",
+    "lodash": "^4.17.4"
+  }
+}

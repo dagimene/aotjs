@@ -1,0 +1,18 @@
+service: swapi-graphql-sls
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: prod
+  region: us-east-1
+  profile: dagimene
+
+# you can add packaging information here
+package:
+  include:
+    - src/**
+    - node_modules/**
+
+functions:
+  swapi-graphql:
+    handler: src/handler.graphql

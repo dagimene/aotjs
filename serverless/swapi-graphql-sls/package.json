@@ -1,0 +1,16 @@
+{
+  "name": "swapi-graphql-sls",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Gimenez",
+  "license": "MIT",
+  "dependencies": {
+    "@aot/hal-to-graphql": "^0.3.0",
+    "@aot/swapi-hal-server": "^0.3.0",
+    "graphql": "^0.11.7"
+  }
+}
