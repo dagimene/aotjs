@@ -13,7 +13,6 @@ const CORS_HEADERS = {
 
 module.exports.graphql = (event, context, callback) => {
 	const query = JSON.parse(event.body).query;
-	console.log('query: ', query);
 	schemaPromise
 		.then(schema => graphql(schema, query, {}))
 		.then(responseBody => {
