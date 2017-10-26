@@ -7,11 +7,6 @@ const {
 } = require('lodash');
 const apiDefinitions = require('../swapi-resources.json');
 
-const {
-	generateResourcePath,
-	generateResourceIdParameterName
-} = require('../src/rest-util');
-
 const apiHeader = require('./swagger-templates/header');
 const apiResourceDefinitions = require('./swagger-templates/definitions');
 const apiCollectionResourceDefinitionTemplate = require('./swagger-templates/collection-resource-definition');

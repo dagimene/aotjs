@@ -29,7 +29,7 @@ const SCALARS_MAP = {
 };
 
 module.exports = function apiToSchema(api) {
-	const URL_PREFIX = `http://${api.host}${api.basePath.slice(0, -1)}`
+	const URL_PREFIX = `${api.schemes[0]}://${api.host}${api.basePath.slice(0, -1)}`
 
 	const objectTypeDefinitions = flow(
 		pickBy(definition => definition.type === 'object'),
@@ -46,16 +46,18 @@ module.exports = function apiToSchema(api) {
 			name,
 			description: definition.description,
 			fields: () => {
-				const { _links, ...properties } = definition.properties;
-				return Object.assign({}, {
-					...mapValues(properties, (property, key) => ({
+				const properties = Object.assign({}, definition.properties);
+				const _links = properties._links;
+				delete properties._links;
+				return Object.assign({},
+					mapValues(properties, (property, key) => ({
 							type: key === 'id' ? ID_TYPE : SCALARS_MAP[ property.type ]
 						})),
-					...mapValues(_links.properties, (link, linkName) => ({
+					mapValues(_links.properties, (link, linkName) => ({
 						type: queryFields[link['x-operation-id']].type,
 						resolve: createLinkFieldResolver(linkName)
 					}))
-				});
+				);
 			}
 		})
 	);
@@ -64,10 +66,7 @@ module.exports = function apiToSchema(api) {
 		new GraphQLList(objectTypeFromRef(definition.items.$ref))
 	);
 
-	const types = {
-		...objectTypes,
-		...listTypes
-	};
+	const types = Object.assign({}, objectTypes, listTypes);
 
 	console.log(Object.keys(types));
 
@@ -78,10 +77,13 @@ module.exports = function apiToSchema(api) {
 			const response = operation.responses[ '200' ];
 			const type = typeFromRef(response.schema.$ref);
 			return {
-				[operation.operationId]: {
-					type,
-					description: operation.description,
-					...(parameters ? {
+				[operation.operationId]: Object.assign({},
+					{
+						type,
+						description: operation.description,
+						resolve: createQueryFieldResolver(url, parameters)
+					},
+					parameters ? {
 						args: Object.assign({},
 							...parameters.map(parameter => ({
 								[parameter.name]: {
@@ -90,9 +92,8 @@ module.exports = function apiToSchema(api) {
 								}
 							}))
 						)
-					} : {}),
-					resolve: createQueryFieldResolver(url, parameters)
-				}
+					} : {}
+				)
 			};
 		})
 	);

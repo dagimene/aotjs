@@ -5,7 +5,7 @@
 		"version": "1.0.0",
 		"title": "SWAPI HAL",
 		"contact": {
-			"email": "ing.daniel.gimenez@gmail.com"
+			"twitter": "@idanielgimenez"
 		},
 		"license": {
 			"name": "MIT"
@@ -13,13 +13,10 @@
 	},
 	"host": "localhost:3000",
 	"basePath": "/apis/v0/",
-	"consumes": [
-		"application/json"
-	],
 	"produces": [
 		"application/json"
 	],
 	"schemes": [
-		"https"
+		"http"
 	]
 }

@@ -1,7 +1,6 @@
 {
   "name": "@aot/hal-to-graphql",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.3.0",
   "description": "Generates GraphQL Server from HAL APIs",
   "author": "Daniel Gimenez",
   "license": "MIT",
@@ -13,6 +12,9 @@
   "peerDependencies": {
     "graphql": "^0.11.7"
   },
+  "files": [
+    "src/*"
+  ],
   "dependencies": {
     "axios": "^0.16.2",
     "lodash": "^4.17.4",

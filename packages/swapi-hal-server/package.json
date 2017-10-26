@@ -1,7 +1,6 @@
 {
   "name": "@aot/swapi-hal-server",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.3.0",
   "description": "HAL Star Wars API Server",
   "author": "Daniel Gimenez",
   "license": "MIT",
@@ -13,6 +12,10 @@
     "generate-yaml": "mkdir -p generated && node ./scripts/generate-yaml",
     "generate-yaml:watch": "mkdir -p generated && nodemon --ignore generated/ ./scripts/generate-yaml"
   },
+  "files": [
+    "generated/*",
+    "src/*"
+  ],
   "dependencies": {
     "axios": "^0.16.2",
     "express": "^4.16.1",

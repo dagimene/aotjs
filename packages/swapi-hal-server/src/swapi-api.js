@@ -2,7 +2,6 @@ const { Router } = require('express');
 const {
 	lowerCase,
 	flatMap,
-	filter,
 	forEach,
 	pick
 } = require('lodash');
